@@ -1,8 +1,10 @@
 import Head from "next/head";
 import styles from "@/styles/Home.module.css";
 import React, { useState, useEffect } from "react";
+import db from "./firebase";
+import { collection, addDoc } from "firebase/firestore";
 
-export default function Home() {
+export default async function Home() {
   const [data, setData] = useState("");
   const [name, setName] = useState("");
   const [message, setMessage] = useState("");
@@ -11,6 +13,10 @@ export default function Home() {
     setName("");
     setMessage("");
   };
+  const docRef = await addDoc(collection(db, "cast"), {
+    name:"",
+
+  });
   
   return (
     <>
